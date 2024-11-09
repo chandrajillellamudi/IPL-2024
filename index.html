@@ -127,24 +127,21 @@
         </ul>
     </div>
     
-    <!-- Container where scorecards will be generated -->
+   
     <div id="scorecards-container"></div>
 
-    <!-- Load the scoreCards data -->
+    
     <script src="scorecards-array.js"></script>
 
-    <!-- Script to generate the scorecard UI -->
+   
     <script>
         const scorecardsContainer = document.getElementById('scorecards-container');
 
-        // Loop through each score card and generate the UI
         scoreCards.forEach(card => {
-            // Create the main scorecard div
             const scorecardDiv = document.createElement('div');
             scorecardDiv.classList.add('scorecard');
             scorecardDiv.id = 'scorecard';
 
-            // Result section
             const resultDiv = document.createElement('div');
             resultDiv.id = 'result';
 
@@ -160,7 +157,6 @@
             resultDiv.appendChild(resultTitle);
             resultDiv.appendChild(resultText);
 
-            // Score section
             const scoreDiv = document.createElement('div');
             scoreDiv.id = 'score';
 
@@ -178,7 +174,6 @@
             const mscoreDiv = document.createElement('div');
             mscoreDiv.id = 'mscore';
 
-            // Team 1
             const team1Div = document.createElement('div');
             team1Div.id = 'team1';
 
@@ -207,7 +202,6 @@
             team1Div.appendChild(icon1Div);
             team1Div.appendChild(team1InfoDiv);
 
-            // VS text
             const vsText = document.createElement('span');
             vsText.textContent = "V/S";
             vsText.style.fontSize = "xx-large";
@@ -216,7 +210,6 @@
             vsText.style.justifyContent = "center";
             vsText.style.alignItems = "center";
 
-            // Team 2
             const team2Div = document.createElement('div');
             team2Div.id = 'team2';
 
@@ -245,7 +238,6 @@
             team2Div.appendChild(icon2Div);
             team2Div.appendChild(team2InfoDiv);
 
-            // Append teams and VS text to mscoreDiv
             mscoreDiv.appendChild(team1Div);
             mscoreDiv.appendChild(vsText);
             mscoreDiv.appendChild(team2Div);
@@ -253,7 +245,6 @@
             scoreDiv.appendChild(venueDiv);
             scoreDiv.appendChild(mscoreDiv);
 
-            // Center section with buttons and match center text
             const centerDiv = document.createElement('div');
             centerDiv.id = 'center';
 
@@ -282,12 +273,10 @@
             centerDiv.appendChild(buttonX);
             centerDiv.appendChild(matchCenterText);
 
-            // Append result, score, and center sections to scorecardDiv
             scorecardDiv.appendChild(resultDiv);
             scorecardDiv.appendChild(scoreDiv);
             scorecardDiv.appendChild(centerDiv);
 
-            // Append scorecardDiv to the main container
             scorecardsContainer.appendChild(scorecardDiv);
         });
     </script>
