@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+        #d1{
+            width: 100%;
+            height: 50px;
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            top: 0px;
+            z-index: 1000;
+        }
+       ul{
+        display: flex;
+       }
+          li{
+            list-style-type: none;
+            color: white;
+            display: flex;
+            margin: 0 10px;
+           
+          }
+            #scorecard{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid;
+                border-radius: 20px;
+                margin-top: 10px;
+                height: 200px;
+                margin: 10px;
+                padding: 0 24px;
+            }
+            #result{
+                display: flex;
+                justify-content: center;
+                align-items: start;
+                flex-direction: column;
+                width: 10%;
+                height: 100%;
+                gap: 24px;
+                padding: 0 4px;
+            }
+            #score{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                flex-grow: 1;
+                height: 100%;
+            }
+            #mscore{
+                display: flex;
+            }
+            #team1{
+                display: flex;
+
+            }
+            #kkr{
+                display: flex;
+                flex-direction: column;
+            }
+            #team2{
+              display: flex;
+              margin-left: 16px;
+            }
+            #srh{
+                display: flex;
+                flex-direction: column;
+            }
+            #icon2{
+                margin:20px 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                
+            }
+            #icon1{
+                margin:20px 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            #venue{
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 30px;
+            }
+            #center{
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                width: 20%;
+                padding: 10px;
+            }
+            #center strong{
+                font-size: 20px;
+                color: white;
+                background-color: orange;
+                padding: 10px;
+                position: relative;
+                transform: skewX(-30deg);
+
+            }
+
+    </style>
+
+</head>
+<body>
+    <div id="d1">
+        <ul>
+            <li>MATCHES</li>
+            <li>VIDEOS</li>
+            <li>STATS</li>
+            <li>POINTS TABLE</li>
+            <li>TEAMS</li>
+            <li>NEWS</li>
+            <li>MORE</li>
+        </ul>
+    </div>
+    
+    <!-- Container where scorecards will be generated -->
+    <div id="scorecards-container"></div>
+
+    <!-- Load the scoreCards data -->
+    <script src="scorecards-array.js"></script>
+
+    <!-- Script to generate the scorecard UI -->
+    <script>
+        const scorecardsContainer = document.getElementById('scorecards-container');
+
+        // Loop through each score card and generate the UI
+        scoreCards.forEach(card => {
+            // Create the main scorecard div
+            const scorecardDiv = document.createElement('div');
+            scorecardDiv.classList.add('scorecard');
+            scorecardDiv.id = 'scorecard';
+
+            // Result section
+            const resultDiv = document.createElement('div');
+            resultDiv.id = 'result';
+
+            const resultTitle = document.createElement('span');
+            resultTitle.textContent = card.result_section.title;
+            resultTitle.style.border = "1px solid";
+            resultTitle.style.padding = "4px 12px";
+
+            const resultText = document.createElement('strong');
+            resultText.textContent = card.result_section.text;
+            resultText.style.textAlign = "start";
+
+            resultDiv.appendChild(resultTitle);
+            resultDiv.appendChild(resultText);
+
+            // Score section
+            const scoreDiv = document.createElement('div');
+            scoreDiv.id = 'score';
+
+            const venueDiv = document.createElement('div');
+            venueDiv.id = 'venue';
+
+            const venueText = document.createElement('b');
+            venueText.textContent = card.scorecard_section.venue;
+            const dateText = document.createElement('span');
+            dateText.textContent = card.scorecard_section.date;
+
+            venueDiv.appendChild(venueText);
+            venueDiv.appendChild(dateText);
+
+            const mscoreDiv = document.createElement('div');
+            mscoreDiv.id = 'mscore';
+
+            // Team 1
+            const team1Div = document.createElement('div');
+            team1Div.id = 'team1';
+
+            const icon1Div = document.createElement('div');
+            icon1Div.id = 'icon1';
+            icon1Div.textContent = card.scorecard_section.teams[0].team_short;
+            icon1Div.style.borderRadius = '50%';
+            icon1Div.style.width = '50px';
+            icon1Div.style.height = '50px';
+            icon1Div.style.border = '1px solid';
+
+            const team1InfoDiv = document.createElement('div');
+            team1InfoDiv.id = 'kkr';
+            const team1Name = document.createElement('b');
+            team1Name.textContent = card.scorecard_section.teams[0].team;
+            const team1Score = document.createElement('strong');
+            team1Score.textContent = card.scorecard_section.teams[0].score;
+            team1Score.style.fontSize = 'xx-large';
+            const team1Overs = document.createElement('span');
+            team1Overs.textContent = `(${card.scorecard_section.teams[0].overs} OV)`;
+
+            team1InfoDiv.appendChild(team1Name);
+            team1InfoDiv.appendChild(team1Score);
+            team1InfoDiv.appendChild(team1Overs);
+
+            team1Div.appendChild(icon1Div);
+            team1Div.appendChild(team1InfoDiv);
+
+            // VS text
+            const vsText = document.createElement('span');
+            vsText.textContent = "V/S";
+            vsText.style.fontSize = "xx-large";
+            vsText.style.color = "gray";
+            vsText.style.display = "flex";
+            vsText.style.justifyContent = "center";
+            vsText.style.alignItems = "center";
+
+            // Team 2
+            const team2Div = document.createElement('div');
+            team2Div.id = 'team2';
+
+            const icon2Div = document.createElement('div');
+            icon2Div.id = 'icon2';
+            icon2Div.textContent = card.scorecard_section.teams[1].team_short;
+            icon2Div.style.borderRadius = '50%';
+            icon2Div.style.width = '50px';
+            icon2Div.style.height = '50px';
+            icon2Div.style.border = '1px solid';
+
+            const team2InfoDiv = document.createElement('div');
+            team2InfoDiv.id = 'srh';
+            const team2Name = document.createElement('b');
+            team2Name.textContent = card.scorecard_section.teams[1].team;
+            const team2Score = document.createElement('strong');
+            team2Score.textContent = card.scorecard_section.teams[1].score;
+            team2Score.style.fontSize = 'xx-large';
+            const team2Overs = document.createElement('span');
+            team2Overs.textContent = `(${card.scorecard_section.teams[1].overs} OV)`;
+
+            team2InfoDiv.appendChild(team2Name);
+            team2InfoDiv.appendChild(team2Score);
+            team2InfoDiv.appendChild(team2Overs);
+
+            team2Div.appendChild(icon2Div);
+            team2Div.appendChild(team2InfoDiv);
+
+            // Append teams and VS text to mscoreDiv
+            mscoreDiv.appendChild(team1Div);
+            mscoreDiv.appendChild(vsText);
+            mscoreDiv.appendChild(team2Div);
+
+            scoreDiv.appendChild(venueDiv);
+            scoreDiv.appendChild(mscoreDiv);
+
+            // Center section with buttons and match center text
+            const centerDiv = document.createElement('div');
+            centerDiv.id = 'center';
+
+            const buttonC = document.createElement('button');
+            buttonC.textContent = 'C';
+            buttonC.style.width = '50px';
+            buttonC.style.height = '50px';
+            buttonC.style.borderRadius = '50%';
+
+            const buttonX = document.createElement('button');
+            buttonX.textContent = 'X';
+            buttonX.style.width = '50px';
+            buttonX.style.height = '50px';
+            buttonX.style.borderRadius = '50%';
+
+            const matchCenterText = document.createElement('strong');
+            matchCenterText.textContent = 'match center';
+            matchCenterText.style.fontSize = '20px';
+            matchCenterText.style.color = 'white';
+            matchCenterText.style.backgroundColor = 'orange';
+            matchCenterText.style.padding = '10px';
+            matchCenterText.style.position = 'relative';
+            matchCenterText.style.transform = 'skewX(-30deg)';
+
+            centerDiv.appendChild(buttonC);
+            centerDiv.appendChild(buttonX);
+            centerDiv.appendChild(matchCenterText);
+
+            // Append result, score, and center sections to scorecardDiv
+            scorecardDiv.appendChild(resultDiv);
+            scorecardDiv.appendChild(scoreDiv);
+            scorecardDiv.appendChild(centerDiv);
+
+            // Append scorecardDiv to the main container
+            scorecardsContainer.appendChild(scorecardDiv);
+        });
+    </script>
+</body>
+</html>
+
+       
