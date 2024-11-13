@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+            }
+            #main{
+                border: 1px solid black;
+                width: 100%;
+                height: 100%;
+                border-collapse: collapse;
+                
+            }
+            #head{
+                border: 1px solid black;
+                height: 100px;  
+                font-size: large;  
+            }
+            #body{
+                background-color: lightgrey;
+                text-align: center;
+            }
+        </style>
+        <body>
+            <table id="main">
+                <thead id="head">
+                    <tr>
+                        <th>Pos</th>
+                        <th>Team</th>
+                        <th>Matches</th>
+                        <th>Won</th>
+                        <th>Lost</th>
+                        <th>NR</th>
+                        <th>NRR</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody id="body">
+                    <script src="points-array.js"></script>
+                    <script>
+                        points.forEach(point => {
+                            const row = document.createElement('tr');
+                            const pos = document.createElement('td');
+                            pos.innerText = point.no;
+                            const team = document.createElement('td');
+                            team.textContent = point.team;
+                            const matches = document.createElement('td');
+                            matches.innerText = point.played;
+                            const won = document.createElement('td');
+                            won.textContent = point.won;
+                            const lost = document.createElement('td');
+                            lost.innerText = point.lost;
+                            const nr = document.createElement('td');
+                            nr.innerText = point.NR;
+                            const nrr = document.createElement('td');
+                            nrr.innerText = point.NRR;
+                            const points = document.createElement('td');
+                            points.innerText = point.points;
+                            row.appendChild(pos);
+                            row.appendChild(team);
+                            row.appendChild(matches);
+                            row.appendChild(won);
+                            row.appendChild(lost);
+                            row.appendChild(nr);
+                            row.appendChild(nrr);
+                            row.appendChild(points);
+                            body.appendChild(row);
+                        });
+                    </script>
+                </tbody>
+            </table>
+        </body>
+    </head>
+</html>
