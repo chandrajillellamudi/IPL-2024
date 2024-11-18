@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Table</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #main {
+            width: 100%;
+            overflow: hidden;
+        }
+        #head {
+            background-color: purple;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+        #body {
+            text-align: center;
+            border: 1px solid black;
+            width: 100%;
+            background-color:whitesmoke;
+        }
+        .player-cell img {
+            width: 100px;
+            height: 100px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        .player-cell {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: medium;
+        }
+         th, td {
+            border:1px solid black;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <table id="main" cellspacing="0px" cellpadding="20px">
+        <thead id="head">
+            <tr>
+                <th>POS</th>
+                <th>PLAYER</th>
+                <th>WKTS</th>
+                <th>MAT</th>
+                <th>INNS</th>
+                <th>OV</th>
+                <th>RUNS</th>
+                <th>BBI</th>
+                <th>AVG</th>
+                <th>ECON</th>
+                <th>SR</th>
+                <th>4W</th>
+                <th>5W</th>
+            </tr>
+        </thead>
+        <tbody id="body">
+           
+            <script src="purple.js"></script>
+            <script>
+               
+                orange.forEach(playerData => {
+                    const row = document.createElement('tr');
+
+                    
+                    const pos = document.createElement('td');
+                    pos.textContent = playerData.pos;
+
+                    const player = document.createElement('td');
+                    player.classList.add('player-cell');
+                    if (playerData.player.picture) {
+                        const img = document.createElement('img');
+                        img.src = playerData.player.picture;
+                        img.alt = `${playerData.player.name}'s picture`;
+                        player.appendChild(img);
+                    }
+                    player.appendChild(document.createTextNode(`${playerData.player.name} (${playerData.player.team})`));
+
+                    const WKTS = document.createElement('td');
+                    WKTS.textContent = playerData.WKTS;
+
+                    const MAT = document.createElement('td');
+                    MAT.textContent = playerData.MAT;
+
+                    const INNS = document.createElement('td');
+                    INNS.textContent = playerData.INNS;
+
+                    const OV = document.createElement('td');
+                    OV.textContent = playerData.OV;
+
+                    const RUNS = document.createElement('td');
+                    RUNS.textContent = playerData.RUNS;
+
+                    const BBI = document.createElement('td');
+                    BBI.textContent = playerData.BBI;
+
+                    const AVG = document.createElement('td');
+                    AVG.textContent = playerData.AVG;
+
+                    const ECON = document.createElement('td');
+                    ECON.textContent = playerData.ECON;
+
+                    const SR = document.createElement('td');
+                    SR.textContent = playerData.SR;
+
+                    const FOW = document.createElement('td');
+                    FOW.textContent = playerData.FOW;
+
+                    const FW = document.createElement('td');
+                    FW.textContent = playerData.FW;
+
+                    
+                    row.appendChild(pos);
+                    row.appendChild(player);
+                    row.appendChild(WKTS);
+                    row.appendChild(MAT);
+                    row.appendChild(INNS);
+                    row.appendChild(OV);
+                    row.appendChild(RUNS);
+                    row.appendChild(BBI);
+                    row.appendChild(AVG);
+                    row.appendChild(ECON);
+                    row.appendChild(SR);
+                    row.appendChild(FOW);
+                    row.appendChild(FW);
+
+                   
+                    document.getElementById('body').appendChild(row);
+                });
+            </script>
+        </tbody>
+    </table>
+</body>
+</html>
