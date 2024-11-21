@@ -19,16 +19,30 @@
             top: 0px;
             z-index: 1000;
         }
+        
        ul{
         display: flex;
        }
-          li{
+
+       a{
+        text-decoration: none;
+       }
+
+           li{
             list-style-type: none;
+            text-decoration: none;
             color: white;
             display: flex;
             margin: 0 10px;
-           
+            padding: 5px;
+          
           }
+          li:hover{
+              background-color: white;
+              color: black;
+              border-radius: 10px;
+          }
+
             #scorecard{
                 display: flex;
                 justify-content: center;
@@ -40,6 +54,7 @@
                 margin: 10px;
                 padding: 0 24px;
             }
+
             #result{
                 display: flex;
                 justify-content: center;
@@ -50,6 +65,7 @@
                 gap: 24px;
                 padding: 0 4px;
             }
+
             #score{
                 display: flex;
                 flex-direction: column;
@@ -58,6 +74,7 @@
                 flex-grow: 1;
                 height: 100%;
             }
+
             #mscore{
                 display: flex;
             }
@@ -73,6 +90,7 @@
               display: flex;
               margin-left: 16px;
             }
+            
             #srh{
                 display: flex;
                 flex-direction: column;
@@ -123,8 +141,7 @@
            <a href="purple.html"><li>PURPLE CAP</li></a>
            <a href="points.html"> <li>POINTS TABLE</li></a>
             <a href="teams.html"> <li>TEAMS</li></a>
-           <a href=""> <li>NEWS</li></a>
-           <a href=""> <li>MORE</li></a>
+           <a href="more.html"> <li>MORE</li></a>
         </ul>
     </div>
     
